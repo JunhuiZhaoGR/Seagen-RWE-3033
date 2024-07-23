@@ -1,0 +1,7 @@
+CREATE OR REPLACE TABLE GENESIS_TEMP.PUBLIC.JZ_RWE3033_02 AS (
+  SELECT a.*, year(MET_DIAGNOSIS_DATE) - BIRTH_YEAR as age
+  FROM GENESIS_TEMP.PUBLIC.JZ_RWE3033_01 AS a
+  LEFT JOIN ODS.FIRN.VW_DEMOGRAPHICS as b
+  ON a.patient_id = b.patient_id and b.period = '{year_month}'
+  having age >= 18
+)

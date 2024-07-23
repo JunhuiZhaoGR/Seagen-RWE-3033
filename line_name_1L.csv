@@ -1,0 +1,151 @@
+"","Var1","Freq"
+"1","abemaciclib",17
+"2","abemaciclib, capecitabine",1
+"3","abemaciclib, cisplatin-carboplatin, paclitaxel, pertuzumab, trastuzumab",1
+"4","abemaciclib, palbociclib",1
+"5","abemaciclib, pertuzumab, trastuzumab",1
+"6","abemaciclib, ribociclib",2
+"7","abemaciclib, trastuzumab",3
+"8","alpelisib",1
+"9","atezolizumab, paclitaxel",1
+"10","bevacizumab-awwb, trastuzumab",1
+"11","bevacizumab, cisplatin-carboplatin, paclitaxel",1
+"12","bevacizumab, paclitaxel",1
+"13","bevacizumab, pertuzumab, trastuzumab",1
+"14","capecitabine",129
+"15","capecitabine, cisplatin-carboplatin, everolimus",1
+"16","capecitabine, clinical study drug, trastuzumab",1
+"17","capecitabine, everolimus, lapatinib",1
+"18","capecitabine, gemcitabine, pertuzumab, trastuzumab",1
+"19","capecitabine, ixabepilone",1
+"20","capecitabine, kadcyla, lapatinib",2
+"21","capecitabine, kadcyla, trastuzumab, tukysa",1
+"22","capecitabine, lapatinib",148
+"23","capecitabine, lapatinib, trastuzumab",4
+"24","capecitabine, lapatinib, vinorelbine",1
+"25","capecitabine, neratinib",3
+"26","capecitabine, paclitaxel, pertuzumab, trastuzumab",2
+"27","capecitabine, paclitaxel, trastuzumab",1
+"28","capecitabine, paclitaxel, trastuzumab, tukysa",1
+"29","capecitabine, pertuzumab, trastuzumab",1
+"30","capecitabine, trastuzumab",15
+"31","capecitabine, trastuzumab, tukysa",22
+"32","capecitabine, tukysa",30
+"33","cisplatin-carboplatin",1
+"34","cisplatin-carboplatin, cyclophosphamide, doxorubicin, paclitaxel, pertuzumab, trastuzumab",2
+"35","cisplatin-carboplatin, cyclophosphamide, doxorubicin, paclitaxel, trastuzumab",1
+"36","cisplatin-carboplatin, cyclophosphamide, paclitaxel, trastuzumab",2
+"37","cisplatin-carboplatin, doxorubicin, etoposide",1
+"38","cisplatin-carboplatin, gemcitabine",8
+"39","cisplatin-carboplatin, gemcitabine, kadcyla",1
+"40","cisplatin-carboplatin, gemcitabine, pertuzumab, trastuzumab",1
+"41","cisplatin-carboplatin, gemcitabine, trastuzumab",9
+"42","cisplatin-carboplatin, other, paclitaxel, pertuzumab, trastuzumab",1
+"43","cisplatin-carboplatin, paclitaxel",15
+"44","cisplatin-carboplatin, paclitaxel, pembrolizumab",2
+"45","cisplatin-carboplatin, paclitaxel, pertuzumab, trastuzumab",292
+"46","cisplatin-carboplatin, paclitaxel, trastuzumab",133
+"47","cisplatin-carboplatin, pertuzumab, trastuzumab",6
+"48","cisplatin-carboplatin, trastuzumab, vinorelbine",1
+"49","clinical study drug",67
+"50","clinical study drug, gemcitabine, trastuzumab",2
+"51","clinical study drug, kadcyla",1
+"52","clinical study drug, paclitaxel",2
+"53","clinical study drug, paclitaxel, pertuzumab",1
+"54","clinical study drug, paclitaxel, pertuzumab, trastuzumab",2
+"55","clinical study drug, pertuzumab",1
+"56","clinical study drug, trastuzumab",5
+"57","clinical study drug, trastuzumab, vinorelbine",1
+"58","cyclophosphamide, doxorubicin",65
+"59","cyclophosphamide, doxorubicin, fluorouracil, trastuzumab",1
+"60","cyclophosphamide, doxorubicin, paclitaxel",4
+"61","cyclophosphamide, doxorubicin, paclitaxel, pertuzumab, trastuzumab",4
+"62","cyclophosphamide, doxorubicin, paclitaxel, trastuzumab",1
+"63","cyclophosphamide, doxorubicin, trastuzumab",1
+"64","cyclophosphamide, epirubicin, fluorouracil",3
+"65","cyclophosphamide, fluorouracil, methotrexate",2
+"66","cyclophosphamide, paclitaxel",3
+"67","cyclophosphamide, paclitaxel, pertuzumab, trastuzumab",3
+"68","cyclophosphamide, paclitaxel, trastuzumab",8
+"69","daratumumab, paclitaxel, pertuzumab, trastuzumab",1
+"70","doxorubicin pegylated liposomal",3
+"71","doxorubicin pegylated liposomal, trastuzumab",1
+"72","doxorubicin, paclitaxel, pertuzumab, trastuzumab",1
+"73","doxorubicin, paclitaxel, trastuzumab",2
+"74","doxorubicin, palbociclib",1
+"75","enhertu",51
+"76","enhertu, kadcyla",1
+"77","enhertu, pertuzumab, trastuzumab",1
+"78","eribulin",6
+"79","eribulin, paclitaxel",1
+"80","eribulin, paclitaxel, pertuzumab, trastuzumab",1
+"81","eribulin, trastuzumab",4
+"82","everolimus",18
+"83","everolimus, pertuzumab, trastuzumab",1
+"84","everolimus, trastuzumab",1
+"85","fluorouracil",1
+"86","fluorouracil, irinotecan, leucovorin, oxaliplatin",1
+"87","fluorouracil, methotrexate",1
+"88","fluorouracil, trastuzumab",1
+"89","gemcitabine",5
+"90","gemcitabine, paclitaxel, pertuzumab, trastuzumab",4
+"91","gemcitabine, paclitaxel, trastuzumab",1
+"92","gemcitabine, pertuzumab, trastuzumab",3
+"93","gemcitabine, trastuzumab",17
+"94","hydroxyurea, pertuzumab, trastuzumab",1
+"95","ixabepilone",1
+"96","ixabepilone, lapatinib",1
+"97","ixabepilone, trastuzumab",1
+"98","kadcyla",279
+"99","kadcyla, neratinib",1
+"100","kadcyla, paclitaxel",1
+"101","kadcyla, paclitaxel, pertuzumab, trastuzumab",2
+"102","kadcyla, palbociclib",2
+"103","kadcyla, pertuzumab",4
+"104","kadcyla, pertuzumab, trastuzumab",3
+"105","kadcyla, rituximab",1
+"106","kadcyla, trastuzumab",13
+"107","kadcyla, trastuzumab, vinorelbine",1
+"108","lapatinib",115
+"109","lapatinib, paclitaxel",1
+"110","lapatinib, paclitaxel, trastuzumab",1
+"111","lapatinib, palbociclib",1
+"112","lapatinib, pertuzumab, trastuzumab",1
+"113","lapatinib, trastuzumab",19
+"114","lapatinib, trastuzumab, vinorelbine",1
+"115","methotrexate",1
+"116","methotrexate, neratinib",1
+"117","neratinib",13
+"118","neratinib, paclitaxel, trastuzumab",1
+"119","nivolumab",1
+"120","olaparib",3
+"121","olaparib, trastuzumab",1
+"122","other",7
+"123","paclitaxel",58
+"124","paclitaxel, palbociclib",2
+"125","paclitaxel, palbociclib, pertuzumab, trastuzumab",1
+"126","paclitaxel, pertuzumab",3
+"127","paclitaxel, pertuzumab, ribociclib, trastuzumab",2
+"128","paclitaxel, pertuzumab, trastuzumab",1560
+"129","paclitaxel, pertuzumab, trastuzumab, vinorelbine",1
+"130","paclitaxel, rituximab, trastuzumab",1
+"131","paclitaxel, trastuzumab",247
+"132","paclitaxel, trastuzumab, vinorelbine",1
+"133","palbociclib",158
+"134","palbociclib, pertuzumab, trastuzumab",5
+"135","palbociclib, trastuzumab",15
+"136","pembrolizumab",4
+"137","pertuzumab",3
+"138","pertuzumab, ribociclib, trastuzumab",2
+"139","pertuzumab, trastuzumab",385
+"140","pertuzumab, trastuzumab, vinorelbine",16
+"141","ribociclib",20
+"142","ribociclib, trastuzumab",1
+"143","sacituzumab govitecan-hziy",1
+"144","talazoparib",1
+"145","topotecan",1
+"146","trastuzumab",540
+"147","trastuzumab, tukysa",1
+"148","trastuzumab, vinorelbine",41
+"149","tukysa",7
+"150","vinorelbine",6

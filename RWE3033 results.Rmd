@@ -1,0 +1,258 @@
+---
+title: "RWE-3033 Adult female patients with a diagnosis of HER2+ mBC who receive 1L in the metastatic setting"
+author: "Junhui Zhao"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    number_sections: true
+    code_folding: hide
+    toc_depth: 3
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = 'center',
+  out.width = "90%",
+  fig.width = 12,
+  fig.height = 8)
+
+library(gt)
+options(digits=2)
+library(kableExtra)
+```
+
+# Attrition
+```{r}
+bind_cols(
+  tribble(
+    ~Criteria,
+    "1. Patients diagnosed with mBC. Date of metastatic diagnosis will be referred to as the 'diagnosis date'.",
+    "2. Patients 18 years and older at mBC diagnosis date.",
+    "3. Patients who were treated with systemic anticancer treatments in the metastatic setting for at least one line of therapy (LOT). The date of 1L initiation will be considered the index date.",
+    "4. Patients whose last HER2 assessment prior to 1L initiation and up to 28 days after is positive",
+    "5. Patients with last activity or death date (set to last day of the month) occurrence after 1L initiation date.",
+    "6. Patients with no evidence of other cancers in the six months prior to the index date",
+    "7. Patients who are female"
+  ),
+  tbl_cohort %>% select(PTS, pct_remained) %>% rename(`N` = PTS)
+) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T) 
+
+```
+
+
+# Exploratory Objective 1: 1L treatment patterns
+```{r}
+table1_trt1
+```
+
+# Exploratory Objective 2
+## Induction/maintenance among patients initiating trastuzumab + pertuzumab + taxane chemotherapy in 1L
+```{r}
+table1_trt
+```
+
+## Chemotherapy agents used in induction 
+```{r}
+table1_chemodrug
+```
+
+## Outcomes
+### Overall survival
+#### Overall
+```{r}
+
+generate_os_table (outcome, tt_event, event_ind, 1, 'overall', 'os')%>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+bind_rows(
+  generate_os_timepoint(outcome, tt_event, event_ind, 1, 'overall', 'os', 12),
+  generate_os_timepoint(outcome, tt_event, event_ind, 1, 'overall', 'os', 24),
+  generate_os_timepoint(outcome, tt_event, event_ind, 1, 'overall', 'os', 36),
+  generate_os_timepoint(outcome, tt_event, event_ind, 1, 'overall', 'os', 48)
+) %>%
+  select(-variable) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+
+
+survivalfit_os =  survival::survfit(survival::Surv(event_time_death, event_ind_death) ~ 1, data = outcome)
+survminer::ggsurvplot(fit = survivalfit_os,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      ylab = "Overall Survival Probability",
+                      break.x.by = 12)
+```
+
+
+#### By brain metastases prior to 1L initiation 
+
+```{r}
+
+generate_os_table (outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'os')%>% 
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+
+bind_rows(
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'os', 12),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'os', 24),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'os', 36),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'os', 48)
+) %>%
+  select(-variable) %>%
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+survivalfit_os_brain =  survival::survfit(survival::Surv(event_time_death, event_ind_death) ~ brain_mets, 
+                                                      data = outcome)
+survminer::ggsurvplot(fit = survivalfit_os_brain,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      legend.labs = c('No brian mets', 'brain mets'),
+                      ylab = "Overall Survival Probability",
+                      break.x.by = 12)
+```
+
+### TTNT
+
+#### Overall
+```{r}
+generate_os_table (outcome, tt_event, event_ind, 1, 'overall', 'ttnt')%>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+bind_rows(
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttnt', 12),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttnt', 24),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttnt', 36),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttnt', 48)
+) %>%
+  select(-variable) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+survivalfit_ttnt =  survival::survfit(survival::Surv(event_time_ttnt, event_ind_ttnt) ~ 1, 
+                                                      data = outcome)
+survminer::ggsurvplot(fit = survivalfit_ttnt,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      ylab = "Survival Probability",
+                      break.x.by = 12)
+```
+
+#### By brain metastases prior to 1L initiation 
+
+```{r}
+
+generate_os_table (outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttnt')%>% 
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+bind_rows(
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttnt', 12),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttnt', 24),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttnt', 36),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttnt', 48)
+) %>%
+  select(-variable) %>%
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+survivalfit_ttnt_brain =  survival::survfit(survival::Surv(event_time_ttnt, event_ind_ttnt) ~ brain_mets, 
+                                                      data = outcome)
+survminer::ggsurvplot(fit = survivalfit_ttnt_brain,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      legend.labs = c('No brian mets', 'brain mets'),
+                      ylab = "Survival Probability",
+                      break.x.by = 12)
+```
+
+### TTD
+
+
+
+#### Overall
+```{r}
+generate_os_table (outcome, tt_event, event_ind, 1, 'overall', 'ttd')%>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+bind_rows(
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttd', 12),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttd', 24),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttd', 36),
+  generate_os_timepoint(outcome , tt_event, event_ind, 1, 'overall', 'ttd', 48)
+) %>%
+  select(-variable) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+survivalfit_ttd =  survival::survfit(survival::Surv(event_time_ttd, event_ind_ttd) ~ 1, 
+                                                      outcome)
+survminer::ggsurvplot(fit = survivalfit_ttd,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      ylab = "Survival Probability",
+                      break.x.by = 12)
+```
+
+#### By brain metastases prior to 1L initiation 
+
+```{r}
+generate_os_table (outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttd')%>% 
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+
+bind_rows(
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttd', 12),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttd', 24),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttd', 36),
+  generate_os_timepoint(outcome, tt_event, event_ind, brain_mets, 'brain_mets', 'ttd', 48)
+) %>%
+  select(-variable) %>%
+  filter(Category != "brain_mets") %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(full_width = T)
+
+survivalfit_ttd_brain =  survival::survfit(survival::Surv(event_time_ttd, event_ind_ttd) ~ brain_mets, 
+                                                      data = outcome)
+survminer::ggsurvplot(fit = survivalfit_ttd_brain,
+                      risk.table = TRUE,
+                      surv.median.line = "h",
+                      xlab = "Months",
+                      legend.labs = c('No brian mets', 'brain mets'),
+                      ylab = "Survival Probability",
+                      break.x.by = 12)
+```
+
+# Demographics
+```{r}
+baseline_demo_table
+```
+# Treatment characteristics
+```{r}
+baseline_trt_table
+```
